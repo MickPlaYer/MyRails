@@ -1,0 +1,60 @@
+
+<script type="text/x-template" id="item-row">
+  <tr>
+    <td>
+      <div v-if="editMode">
+        <input type="text" v-model="item.name"><br>
+        <span style="color:red">{{ errors.name }}</span>
+      </div>
+      <div v-else>{{ item.name }}</div>
+    </td>
+    <td>
+      <div v-if="editMode">
+        <input type="text" v-model="item.description"><br>
+        <span style="color:red">{{ errors.description }}</span>
+      </div>
+      <div v-else>{{ item.description }}</div>
+    </td>
+    <td>
+      <button v-if="editMode" @click="editItem">Save</button>
+      <button v-else @click="editMode = true">Edit</button>
+      <button v-if="!editMode" @click="removeItem" style="color:red">Remove</button>
+    </td>
+  </tr>
+</script>
+
+<h1>Items</h1>
+
+<div id="items">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        is="item-row"
+        v-for="item in items"
+        :item="item">
+      </tr>
+      <tr>
+        <td>
+          <!-- Input -->
+          <input type="text" v-model="item.name"><br>
+          <!-- Validation errors -->
+          <span style="color:red">{{ errors.name }}</span>
+        </td>
+        <td>
+          <!-- Input -->
+          <input type="text" v-model="item.description"><br>
+          <!-- Validation errors -->
+          <span style="color:red">{{ errors.description }}</span>
+        </td>
+        <!-- button click calls hireEmployee -->
+        <td><button @click="addItem">Add</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -13,4 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require vue
+//= require vue-resource
 //= require_tree .
+
+Vue.http.headers.common['X-CSRF-Token'] = $('[name="csrf-token"]').attr('content');
