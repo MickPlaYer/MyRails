@@ -2,12 +2,36 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-this.showMainScene = () ->
-  $('#mainScene').show();
+blockHeight = 600
+mainViewMargin = ($(window).height() - blockHeight) / 2
+mainViewMargin -= mainViewMargin % 2
+mainSceneTop = mainViewMargin + blockHeight
+mainScene2Top = mainSceneTop + blockHeight
 
-$( window ).scroll(
+this.showMainScene = () ->
+  $('#mainScene').show()
+  $('#mainScene2').show()
+  $('#scrollAble').show()
+
+$(window).ready(
   () ->
-    console.log(document.body.scrollTop)
-    if document.body.scrollTop >= 600
-      $('#startBlock').hide()
+    $('#startScene').css('top', mainViewMargin + 'px')
+    $('#mainScene').css('top', mainSceneTop + 'px')
+    $('#mainScene2').css('top', mainScene2Top + 'px')
+    $('#footer').css('top', mainViewMargin + blockHeight + 'px')
+)
+
+$(window).scroll(
+  () ->
+    delta = document.body.scrollTop
+    document.body.scrollTop = 0
+    mainSceneTop -= delta
+    mainScene2Top -= delta
+    if mainSceneTop <= -blockHeight
+      mainSceneTop += blockHeight * 2
+      $('#startScene').hide()
+    if mainScene2Top <= -blockHeight
+      mainScene2Top += blockHeight * 2
+    $('#mainScene').css('top', mainSceneTop + 'px')
+    $('#mainScene2').css('top', mainScene2Top + 'px')
 )

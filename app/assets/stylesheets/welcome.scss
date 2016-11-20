@@ -32,7 +32,7 @@ body {
 }
 
 #startButton {
-  position: fixed;
+  position: relative;
   top: $height / 2;
   left: 50%;
   height: 50px;
@@ -41,13 +41,14 @@ body {
   z-index: 0;
 }
 
-#mainScene {
+.mainScene {
   width: $width;
-  height: 100vh;
+  height: $height;
   background-color: orange;
   z-index: 2;
-  position: relative;
+  position: fixed;
   display: none;
+  background: url('http://www.locustleaves.com/cronos08.gif');
 }
 
 #footer {
