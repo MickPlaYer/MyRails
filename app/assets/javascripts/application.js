@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require vue
 //= require vue-resource
+//= require jquery.offscreen
 // require_tree .
 
 Vue.http.headers.common['X-CSRF-Token'] = $('[name="csrf-token"]').attr('content');

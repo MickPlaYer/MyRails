@@ -24,7 +24,7 @@ body {
 
 #startScene {
   width: $width;
-  height: $height;
+  height: 100vh;
   background-color: white;
   z-index: 0;
   position: fixed;
@@ -33,7 +33,7 @@ body {
 
 #startButton {
   position: relative;
-  top: $height / 2;
+  top: 50%;
   left: 50%;
   height: 50px;
   width: 200px;
@@ -41,22 +41,15 @@ body {
   z-index: 0;
 }
 
-.mainScene {
+#mainScene {
   width: $width;
-  height: $height;
-  background-color: orange;
   z-index: 2;
-  position: fixed;
+  position: absolute;
   display: none;
-  background: url('http://www.locustleaves.com/cronos08.gif');
 }
 
-#footer {
+.block {
   width: $width;
-  height: auto;
-  position: fixed;
-  top: $height;
-  bottom: 0px;
-  background-color: black;
-  z-index: 99;
+  height: $height;
+  background: url('http://dullahansoft.com/pixel/wp-content/uploads/2014/09/grass-att1-big.png');
 }
