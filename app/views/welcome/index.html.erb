@@ -1,14 +1,28 @@
 
 <div id="mainView">
   <div id="startScene">
-    <button id="startButton" onclick="$('#mainScene').show()">START</button>
+    <div id="loginBlock">
+      <div id="loginForm">
+        <input class="loginInput" placeholder="E-Mail" type="text" v-model="user.email">
+        <input class="loginInput" placeholder="Password" type="password" v-model="user.password">
+        <button id="loginButton" @click="login">Login</button>
+        <span style="color:red">{{ error }}</span>
+      </div>
+      <div id="welcomeMessage" style="color:black;display:none;">Welcome back {{ user.email }}. Scroll to play.</div>
+    </div>
   </div>
   <div id="mainScene">
-    <div id="startBlock" style="height:100vh;"></div>
-    <div id="block1" class="block"></div>
-    <div id="block2" class="block"></div>
-    <div id="block3" class="block"></div>
-    <div id="block4" class="block"></div>
-    <div id="block5" class="block"></div>
+    <div id="blockSet">
+      <div id="startBlock" style="height:100vh;"></div>
+      <div id="block1" class="block"></div>
+      <div id="block2" class="block"></div>
+      <div id="block3" class="block"></div>
+      <div id="block4" class="block"></div>
+      <div id="block5" class="block"></div>
+    </div>
+    <div id="mainUI" style="display:none;">
+      <div id="hero"></div>
+      <div id="logoutButton" class="pixelFont" @click="logout">LogOut</div>
+    </div>
   </div>
 </div>

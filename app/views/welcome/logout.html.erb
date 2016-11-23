@@ -1,0 +1,18 @@
+<script>
+  function logout() {
+    $.ajax({
+        url: '/users/sign_out',
+        method: 'DELETE',
+        success: function () {
+          window.location = '/';
+        }
+      }
+    )
+  }
+
+  setTimeout(function () {
+    logout();
+  }, 1000)
+</script>
+
+<h2>Log-Out...</h2>

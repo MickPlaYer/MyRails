@@ -2,17 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@mixin center($offX: 0px, $offY: 0px) {
+  top: 50%;
+  left: 50%;
+  margin: $offY $offX;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
 
 $width: 800px;
 $height: 600px;
+$inputWidth: 200px;
+$hfInputWidth: $inputWidth / 2;
+$inputHeight: 50px;
+$hfInputHeight: $inputHeight / 2;
+
+// For z-order
+$background: 0;
+$initUI: 1;
+$mainScene: 2;
+$mainUI: 3;
 
 html {
   width: 100%;
   height: 100%;
-  background-color: black;
+  background-color: gray;
 }
 
 body {
@@ -26,24 +42,40 @@ body {
   width: $width;
   height: 100vh;
   background-color: white;
-  z-index: 0;
+  z-index: $background;
   position: fixed;
   background-image: url('http://cdn.sstatic.net/Sites/stackoverflow/img/apple-touch-icon.png');
 }
 
 #startButton {
   position: relative;
-  top: 50%;
-  left: 50%;
-  height: 50px;
-  width: 200px;
-  margin: -25px -100px;
-  z-index: 0;
+  height: $inputHeight;
+  width: $inputWidth;
+  z-index: $initUI;
+}
+
+#loginBlock {
+  @include center(-$inputWidth/2, -$inputHeight/2);
+  position: relative;
+  width: $inputWidth;
+  z-index: $initUI;
+  background-color: white;
+  border: 4px;
+  border-style: solid;
+}
+
+#loginButton {
+  width: $inputWidth;
+}
+
+.loginInput {
+  width: $inputWidth - 4;
+  border-width: 1px;
 }
 
 #mainScene {
   width: $width;
-  z-index: 2;
+  z-index: $mainScene;
   position: absolute;
   display: none;
 }
@@ -51,5 +83,28 @@ body {
 .block {
   width: $width;
   height: $height;
-  background: url('http://dullahansoft.com/pixel/wp-content/uploads/2014/09/grass-att1-big.png');
+  background: url('/imgs/land.png');
+}
+
+#hero {
+  @include center(-44px, -64px);
+  position: fixed;
+  height: 128px;
+  width: 88px;
+  z-index: $mainUI;
+  background-image: url('/imgs/hero.png');
+}
+
+#logoutButton {
+  @include center(400-96-8px, -300px);
+  position: fixed;
+  height: 24px;
+  width: 96px;
+  font-size: 24px;
+  background-color: white;
+  border: 4px;
+  border-color: black;
+  border-style: solid;
+  cursor: default;
+  z-index: $mainUI;
 }
