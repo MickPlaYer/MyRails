@@ -8,6 +8,12 @@
   margin: $offY $offX;
 }
 
+@mixin center($offX: 0px, $offY: 0px) {
+  top: 50%;
+  left: 50%;
+  margin: $offY $offX;
+}
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -64,11 +70,11 @@ body {
   border-style: solid;
 }
 
-#loginButton {
+.formButton {
   width: $inputWidth;
 }
 
-.loginInput {
+.formInput {
   width: $inputWidth - 4;
   border-width: 1px;
 }
@@ -95,16 +101,34 @@ body {
   background-image: url('/imgs/hero.png');
 }
 
+$logoutButtonWidth: 96px;
+$logoutButtonBorder: 4px;
+
 #logoutButton {
-  @include center(400-96-8px, -300px);
+  @include center(400 - $logoutButtonWidth - $logoutButtonBorder*2, -300px);
   position: fixed;
+  z-index: $mainUI;
   height: 24px;
-  width: 96px;
+  width: $logoutButtonWidth;
   font-size: 24px;
   background-color: white;
-  border: 4px;
+  border: $logoutButtonBorder;
   border-color: black;
   border-style: solid;
   cursor: default;
+}
+
+#status {
+  @include center(-400px, -300px);
+  position: fixed;
   z-index: $mainUI;
+  font-size: 24px;
+  color: white;
+}
+
+#statusShadow {
+  @include center(-398px, -298px);
+  position: fixed;
+  z-index: $mainUI;
+  font-size: 24px;
 }

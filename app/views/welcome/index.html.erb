@@ -2,16 +2,25 @@
 <div id="mainView">
   <div id="startScene">
     <div id="loginBlock">
-      <div id="loginForm">
-        <input class="loginInput" placeholder="E-Mail" type="text" v-model="user.email">
-        <input class="loginInput" placeholder="Password" type="password" v-model="user.password">
-        <button id="loginButton" @click="login">Login</button>
+      <div id=signUpForm style="display:none;">
+        <input class="formInput" placeholder="E-Mail" type="text" v-model="user.email">
+        <input class="formInput" placeholder="Password" type="password" v-model="user.password">
+        <input class="formInput" placeholder="Password Confirmation" type="password" v-model="user.password_confirmation">
+        <button class="formButton" @click="signUp">Sign Up</button>
+        <button class="formButton" @click="showSignIn">To Sign In</button>
+        <span style="color:red">{{ error }}</span>
+      </div>
+      <div id="signInForm">
+        <input class="formInput" placeholder="E-Mail" type="text" v-model="user.email">
+        <input class="formInput" placeholder="Password" type="password" v-model="user.password">
+        <button class="formButton" @click="signIn">Sign In</button>
+        <button class="formButton" @click="showSignUp">To Sign Up</button>
         <span style="color:red">{{ error }}</span>
       </div>
       <div id="welcomeMessage" style="color:black;display:none;">Welcome back {{ user.email }}. Scroll to play.</div>
     </div>
   </div>
-  <div id="mainScene">
+  <div id="mainScene" class="pixelFont">
     <div id="blockSet">
       <div id="startBlock" style="height:100vh;"></div>
       <div id="block1" class="block"></div>
@@ -22,7 +31,19 @@
     </div>
     <div id="mainUI" style="display:none;">
       <div id="hero"></div>
-      <div id="logoutButton" class="pixelFont" @click="logout">LogOut</div>
+      <div id="logoutButton" @click="logout">LogOut</div>
+      <div id="statusShadow">
+        <span><b>{{ name }}</b></span><br>
+        <span>Hp: {{ hp }}</span><br>
+        <span>Atk: {{ atk }}</span><br>
+        <span>Def: {{ def }}</span>
+      </div>
+      <div id="status">
+        <span><b>{{ name }}</b></span><br>
+        <span>Hp: {{ hp }}</span><br>
+        <span>Atk: {{ atk }}</span><br>
+        <span>Def: {{ def }}</span>
+      </div>
     </div>
   </div>
 </div>
