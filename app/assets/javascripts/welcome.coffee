@@ -110,7 +110,7 @@ this.hero_vue = new Vue
   methods:
     getHero: () ->
       that = this
-      this.$http.get('/hero').then(
+      this.$http.get('/hero.json').then(
         (response) ->
           that.name = response.data.name
           that.hp = response.data.hp

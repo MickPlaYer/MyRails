@@ -13,4 +13,13 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+
+  def authenticate_admin_privilege!
+    return authenticate_admin! if current_admin.privilege
+    respond_to do |format|
+      message = I18n.t(:devise)[:failure][:privilege]
+      format.html { render 'admin/no_privilege', layout: :default }
+      format.json { render json: { error: message } }
+    end
+  end
 end

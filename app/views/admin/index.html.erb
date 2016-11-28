@@ -1,0 +1,55 @@
+
+<script type="text/x-template" id="admin-row">
+  <tr>
+    <td>
+      <div>{{ admin.email }}</div>
+    </td>
+    <td>
+      <div v-if="editMode">
+        <input type="checkbox" v-model="admin.privilege">
+      </div>
+      <div v-else>{{ admin.privilege ? '&#10004;' : '' }}</div>
+    </td>
+    <td>
+      <% if current_admin.privilege %>
+        <button v-if="editMode" @click="edit">Save</button>
+        <button v-else @click="editMode = true">Edit</button>
+        <button v-if="editMode" @click="remove" style="color:red">Remove</button>
+      <% end %>
+      <span style="color:red;">{{ error }}</span>
+    </td>
+  </tr>
+</script>
+
+<h1>Admins</h1>
+<br>
+<div id="admins">
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Privilge</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        is="admin-row"
+        v-for="admin in admins"
+        :admin="admin">
+      </tr>
+      <!-- <tr>
+        <td>
+          <input type="text" v-model="admin.email"><br>
+          <span style="color:red">{{ errors.email }}</span>
+        </td>
+        <td>
+          <input type="checkbox" v-model="admin.privilge">
+        </td>
+        <td><button @click="addItem">Add</button></td>
+      </tr> -->
+    </tbody>
+  </table>
+</div>
+<br><br>
+<%= render 'partial/index' %>
+<%= render 'partial/admin' %>

@@ -24,13 +24,6 @@
 </script>
 
 <h1>Items</h1>
-<% if current_admin %>
-  <%= link_to('SignOut', destroy_admin_session_path, :method => :delete) %> |
-  <%= link_to('ChangePassword', edit_registration_path(:admin)) %>
-<% else %>
-  <%= link_to('SignUp', new_registration_path(:admin)) %> |
-  <%= link_to('SignIn', new_session_path(:admin)) %>
-<% end %>
 <br>
 <div id="items">
   <table>
@@ -48,20 +41,18 @@
       </tr>
       <tr>
         <td>
-          <!-- Input -->
           <input type="text" v-model="item.name"><br>
-          <!-- Validation errors -->
           <span style="color:red">{{ errors.name }}</span>
         </td>
         <td>
-          <!-- Input -->
           <input type="text" v-model="item.description"><br>
-          <!-- Validation errors -->
           <span style="color:red">{{ errors.description }}</span>
         </td>
-        <!-- button click calls hireEmployee -->
         <td><button @click="addItem">Add</button></td>
       </tr>
     </tbody>
   </table>
 </div>
+<br><br>
+<%= render 'partial/index' %>
+<%= render 'partial/admin' %>
