@@ -24,12 +24,12 @@
 </script>
 
 <h1>Items</h1>
-<% if current_user %>
-  <%= link_to('登出', destroy_user_session_path, :method => :delete) %> |
-  <%= link_to('修改密碼', edit_registration_path(:user)) %>
+<% if current_admin %>
+  <%= link_to('SignOut', destroy_admin_session_path, :method => :delete) %> |
+  <%= link_to('ChangePassword', edit_registration_path(:admin)) %>
 <% else %>
-  <%= link_to('註冊', new_registration_path(:user)) %> |
-  <%= link_to('登入', new_session_path(:user)) %>
+  <%= link_to('SignUp', new_registration_path(:admin)) %> |
+  <%= link_to('SignIn', new_session_path(:admin)) %>
 <% end %>
 <br>
 <div id="items">

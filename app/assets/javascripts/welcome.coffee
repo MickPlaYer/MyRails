@@ -112,7 +112,6 @@ this.hero_vue = new Vue
       that = this
       this.$http.get('/hero').then(
         (response) ->
-          console.log(response)
           that.name = response.data.name
           that.hp = response.data.hp
           that.atk = response.data.atk
