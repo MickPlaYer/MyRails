@@ -33,7 +33,7 @@ this.admins = new Vue
           )
         remove: () ->
           that = this
-          url = '/item/' + this.admin.id + '.json'
+          url = '/admin/' + this.admin.id + '.json'
           this.$http.delete(url).then(
             (res) ->
               that.$parent.admins.splice(
@@ -43,6 +43,9 @@ this.admins = new Vue
                 )
                 1
               )
+            (res) ->
+              that.error = res.data.error
+              that.errors = res.data.errors
           )
 
 this.admins.getAdmins()

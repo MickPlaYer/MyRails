@@ -17,6 +17,7 @@ en:
       unauthenticated: "You need to sign in or sign up before continuing."
       unconfirmed: "You have to confirm your email address before continuing."
       privilege: "You do not have privilege."
+      destroy_self: "You can not remove self."
     mailer:
       confirmation_instructions:
         subject: "Confirmation instructions"

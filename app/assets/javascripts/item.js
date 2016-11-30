@@ -52,6 +52,7 @@ Vue.component('item-row', {
   data: function () {
     return {
       editMode: false,
+      imgsrc: '/imgs/items/' + this.item.id + '.png',
       errors: {}
     }
   },
@@ -79,8 +80,32 @@ Vue.component('item-row', {
           items.removeItem(that.item);
         }
       );
+    },
+    uploadImage: function () {
+      var that = this
+      $('#filePicker').off('change');
+      $('#filePicker').on('change', function(){
+        var url = '/item/' + that.item.id + '.image';
+        var file = filePicker.files[0];
+        var fileReader = new FileReader();
+        fileReader.onload = function () {
+          var binaryArray = new Int8Array(fileReader.result)
+          var array = []
+          $.each(binaryArray, function( index, value ) {
+            array.push(value)
+          });
+          that.$http.put(url, { image: array }).then(
+            function(response) {
+              window.location = 'item'
+            }
+          )
+        }
+        fileReader.readAsArrayBuffer(file);
+        $('#filePicker').val('')
+      })
+      $('#filePicker').click()
     }
   }
 });
-
+var debug = {}
 items.queryItems();

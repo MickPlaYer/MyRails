@@ -1,18 +1,26 @@
-// Place all the styles related to the welcome controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-@mixin center($offX: 0px, $offY: 0px) {
-  top: 50%;
-  left: 50%;
+@mixin mainUIElement($offX, $offY) {
   margin: $offY $offX;
+  position: absolute;
 }
 
 @mixin center($offX: 0px, $offY: 0px) {
   top: 50%;
   left: 50%;
-  margin: $offY $offX;
+  @include mainUIElement($offX, $offY);
 }
+
+@mixin topLeft($offX: 0px, $offY: 0px) {
+  top: 0%;
+  left: 0%;
+  @include mainUIElement($offX, $offY);
+}
+
+@mixin topRight($offX: 0px, $offY: 0px) {
+  top: 0%;
+  right: 0%;
+  @include mainUIElement($offX, $offY);
+}
+
 
 ::-webkit-scrollbar {
   display: none;
@@ -27,9 +35,9 @@ $hfInputHeight: $inputHeight / 2;
 
 // For z-order
 $background: 0;
-$initUI: 1;
-$mainScene: 2;
-$mainUI: 3;
+$initUI: 10;
+$mainScene: 20;
+$mainUI: 30;
 
 html {
   width: 100%;
@@ -92,9 +100,17 @@ body {
   background: url('/imgs/land.png');
 }
 
+#mainUI {
+  top: 0;
+  left: 50%;
+  margin-left: -$width/2;
+  position: fixed;
+  width: $width;
+  height: 100vh;
+}
+
 #hero {
   @include center(-44px, -64px);
-  position: fixed;
   height: 128px;
   width: 88px;
   z-index: $mainUI;
@@ -105,8 +121,7 @@ $logoutButtonWidth: 96px;
 $logoutButtonBorder: 4px;
 
 #logoutButton {
-  @include center(400 - $logoutButtonWidth - $logoutButtonBorder*2, -300px);
-  position: fixed;
+  @include topRight();
   z-index: $mainUI;
   height: 24px;
   width: $logoutButtonWidth;
@@ -119,16 +134,14 @@ $logoutButtonBorder: 4px;
 }
 
 #status {
-  @include center(-400px, -300px);
-  position: fixed;
+  @include topLeft();
   z-index: $mainUI;
   font-size: 24px;
   color: white;
 }
 
 #statusShadow {
-  @include center(-398px, -298px);
-  position: fixed;
-  z-index: $mainUI;
+  @include topLeft(2px, 2px);
+  z-index: $mainUI - 1;
   font-size: 24px;
 }

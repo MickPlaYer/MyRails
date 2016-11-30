@@ -1,6 +1,12 @@
+<form id="uploadForm" enctype="multipart/form-data" style="display:none;" method="PUT">
+  <input type="file" id="filePicker"/>
+</form>
 
 <script type="text/x-template" id="item-row">
   <tr>
+    <td>
+      <div>{{ item.id }}</div>
+    </td>
     <td>
       <div v-if="editMode">
         <input type="text" v-model="item.name"><br>
@@ -16,6 +22,9 @@
       <div v-else>{{ item.description }}</div>
     </td>
     <td>
+      <img style="width:16px;height:16px;" :src="imgsrc" @click="uploadImage"/>
+    </td>
+    <td>
       <button v-if="editMode" @click="editItem">Save</button>
       <button v-else @click="editMode = true">Edit</button>
       <button v-if="!editMode" @click="removeItem" style="color:red">Remove</button>
@@ -29,8 +38,10 @@
   <table>
     <thead>
       <tr>
+        <th>Id</th>
         <th>Name</th>
         <th>Description</th>
+        <th>Image</th>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +51,9 @@
         :item="item">
       </tr>
       <tr>
+        <td>
+          .
+        </td>
         <td>
           <input type="text" v-model="item.name"><br>
           <span style="color:red">{{ errors.name }}</span>
