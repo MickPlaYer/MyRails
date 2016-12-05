@@ -14,7 +14,7 @@ class HeroController < ApplicationController
 
   def update
     @hero = Hero.find_by user_id: current_user.id
-    if @hero.id != params['id']
+    if @hero.id != params['id'].to_i
       return render :json => { :error => "Hero not match current user." }
     end
     if @hero.update(hero_params)
