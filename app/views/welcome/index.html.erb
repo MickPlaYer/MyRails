@@ -30,19 +30,19 @@
       <div id="block5" class="block"></div>
     </div>
     <div id="mainUI" style="display:none;">
-      <div id="hero"></div>
+      <div id="heroImage"></div>
       <div id="logoutButton" @click="logout">LogOut</div>
       <div id="status">
-        <span><b>{{ name }}</b></span><br>
-        <span>Hp: {{ hp }}</span><br>
-        <span>Atk: {{ atk }}</span><br>
-        <span>Def: {{ def }}</span>
+        <span><b>{{ status.name }}</b></span><br>
+        <span>Hp: {{ status.hp }}</span><br>
+        <span>Atk: {{ status.atk }}</span><br>
+        <span>Def: {{ status.def }}</span>
       </div>
       <div id="statusShadow">
-        <span><b>{{ name }}</b></span><br>
-        <span>Hp: {{ hp }}</span><br>
-        <span>Atk: {{ atk }}</span><br>
-        <span>Def: {{ def }}</span>
+        <span><b>{{ status.name }}</b></span><br>
+        <span>Hp: {{ status.hp }}</span><br>
+        <span>Atk: {{ status.atk }}</span><br>
+        <span>Def: {{ status.def }}</span>
       </div>
     </div>
   </div>

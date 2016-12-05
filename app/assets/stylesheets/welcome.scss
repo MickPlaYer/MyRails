@@ -1,6 +1,6 @@
 @mixin mainUIElement($offX, $offY) {
   margin: $offY $offX;
-  position: absolute;
+  position: fixed;
 }
 
 @mixin center($offX: 0px, $offY: 0px) {
@@ -20,7 +20,6 @@
   right: 0%;
   @include mainUIElement($offX, $offY);
 }
-
 
 ::-webkit-scrollbar {
   display: none;
@@ -101,15 +100,15 @@ body {
 }
 
 #mainUI {
-  top: 0;
-  left: 50%;
-  margin-left: -$width/2;
-  position: fixed;
-  width: $width;
-  height: 100vh;
+  // top: 0;
+  // left: 50%;
+  // margin-left: -$width/2;
+  // position: fixed;
+  // width: $width;
+  // height: 100vh;
 }
 
-#hero {
+#heroImage {
   @include center(-44px, -64px);
   height: 128px;
   width: 88px;
@@ -121,7 +120,7 @@ $logoutButtonWidth: 96px;
 $logoutButtonBorder: 4px;
 
 #logoutButton {
-  @include topRight();
+  @include topRight(8px, 8px);
   z-index: $mainUI;
   height: 24px;
   width: $logoutButtonWidth;
@@ -134,14 +133,21 @@ $logoutButtonBorder: 4px;
 }
 
 #status {
-  @include topLeft();
+  @include topLeft(8px, 8px);
   z-index: $mainUI;
   font-size: 24px;
   color: white;
 }
 
 #statusShadow {
-  @include topLeft(2px, 2px);
+  @include topLeft(10px, 10px);
   z-index: $mainUI - 1;
   font-size: 24px;
+}
+
+.item {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  cursor: grab;
 }

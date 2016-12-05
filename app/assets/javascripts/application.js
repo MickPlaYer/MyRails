@@ -19,3 +19,4 @@
 // require_tree .
 
 Vue.http.headers.common['X-CSRF-Token'] = $('[name="csrf-token"]').attr('content');
+this.Debug = {}
