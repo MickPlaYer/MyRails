@@ -2,7 +2,12 @@ class MapController < ApplicationController
   def index
     respond_to do |format|
       format.json do
-        render json: { items: [ 27, 27, 1 ] }
+        @items = Item.all
+        items = []
+        3.times do
+          items << @items.sample.id
+        end
+        render json: { items: items }
       end
     end
   end
