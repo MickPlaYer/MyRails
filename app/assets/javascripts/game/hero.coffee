@@ -38,7 +38,6 @@ class this.Hero
     changed.forEach((value) ->
       data[value] = self.status[value]
     )
-    console.log(data)
     $.ajax(
       method: 'PUT'
       url: "hero/#{@id}.json"
@@ -47,7 +46,6 @@ class this.Hero
     )
 
 this.hero = new Hero
-Debug.itemList = hero.itemList
 
 this.hero_vue = new Vue
   el: '#mainUI'
