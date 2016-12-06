@@ -129,7 +129,7 @@ $logoutButtonBorder: 4px;
   border: $logoutButtonBorder;
   border-color: black;
   border-style: solid;
-  cursor: default;
+  cursor: pointer;
 }
 
 #status {
@@ -149,5 +149,5 @@ $logoutButtonBorder: 4px;
   width: 64px;
   height: 64px;
   position: relative;
-  cursor: grab;
+  cursor: pointer;
 }

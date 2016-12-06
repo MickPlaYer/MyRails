@@ -2,7 +2,9 @@ class ItemController < ApplicationController
   before_action :authenticate_admin_privilege!, except: :index
 
   def index
-    @items = Item.all
+    @items = ObjectCache::lookup :items
+    @items = Item.all if @items.nil?
+    ObjectCache::store :items, @items
     respond_to do |format|
       format.html { authenticate_admin_privilege! }
       format.json { render :json => @items }
