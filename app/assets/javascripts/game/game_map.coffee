@@ -10,7 +10,6 @@ class this.GameMap
       document.body.scrollTop -= height
       if block.attr('class') == 'block'
         @updateBlock(block[0])
-        blockSet.appendChild(block[0])
       showUI()
 
   updateBlock: (block) ->
@@ -20,6 +19,8 @@ class this.GameMap
       method: 'GET'
       success: (e) ->
         self.addObject(block, e)
+      complete: (e) ->
+        blockSet.appendChild(block)
     )
 
   addObject: (block, objects) ->
