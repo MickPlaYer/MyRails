@@ -36,10 +36,12 @@ class ItemController < ApplicationController
         image = params[:image].pack 'c*'
         item_image = 'public/imgs/items'
         file_name = params[:id] + '.png'
-        File.open(Rails.root.join(item_image, file_name), 'wb') do |file|
+        file_path = Rails.root.join(item_image, file_name)
+        File.open(file_path, 'wb') do |file|
           file.write(image)
         end
-        render :json => { image: '' }
+        Cloudinary::Uploader.upload(file_path, public_id: "items/#{params[:id]}")
+        render :json => { image: "" }
       end
     end
   end

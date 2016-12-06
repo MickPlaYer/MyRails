@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include CloudinaryHelper
+  
   protect_from_forgery with: :exception
 
   protected

@@ -54,6 +54,6 @@ class this.GameMap
     return item
 
   getItemImage: (id) ->
-    return 'url(imgs/items/' + id + '.png)'
+    return "url(#{Cloudinary.url}#{id}.png)"
 
 this.gameMap = new GameMap(this.hero)

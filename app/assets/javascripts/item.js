@@ -52,7 +52,7 @@ Vue.component('item-row', {
   data: function () {
     return {
       editMode: false,
-      imgsrc: '/imgs/items/' + this.item.id + '.png',
+      imgsrc: Cloudinary.url + this.item.id + '.png',
       errors: {}
     }
   },

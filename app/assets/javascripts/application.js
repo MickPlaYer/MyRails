@@ -16,6 +16,7 @@
 //= require vue
 //= require vue-resource
 //= require jquery.offscreen
+//= require cloudinary
 // require_tree .
 
 Vue.http.headers.common['X-CSRF-Token'] = $('[name="csrf-token"]').attr('content');

@@ -1,0 +1,19 @@
+
+development:
+  cloud_name: "yolomick"
+  api_key: "349865678787916"
+  api_secret: <%= ENV["CLOUDINARY_SECRET"] %>
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: "hki9tlzbe"
+  api_key: "494999427393241"
+  api_secret: <%= ENV["CLOUDINARY_SECRET"] %>
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: "yolomick"
+  api_key: "349865678787916"
+  api_secret: <%= ENV["CLOUDINARY_SECRET"] %>
+  enhance_image_tag: true
+  static_image_support: false
