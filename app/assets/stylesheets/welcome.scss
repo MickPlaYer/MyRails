@@ -132,15 +132,23 @@ $logoutButtonBorder: 4px;
   cursor: pointer;
 }
 
+#statusBlock {
+  @include topLeft(8px, 8px);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
 #status {
   @include topLeft(8px, 8px);
+  position: relative;
   z-index: $mainUI;
   font-size: 24px;
   color: white;
+
 }
 
 #statusShadow {
   @include topLeft(10px, 10px);
+  position: absolute;
   z-index: $mainUI - 1;
   font-size: 24px;
 }

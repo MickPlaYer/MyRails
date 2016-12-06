@@ -23,26 +23,26 @@
   <div id="mainScene" class="pixelFont">
     <div id="blockSet">
       <div id="startBlock" style="height:100vh;"></div>
-      <div id="block1" class="block"></div>
-      <div id="block2" class="block"></div>
-      <div id="block3" class="block"></div>
-      <div id="block4" class="block"></div>
-      <div id="block5" class="block"></div>
+      <% 5.times do |i| %>
+      <%=  content_tag :div, nil, id: "block#{i}", class: "block" %>
+      <% end %>
     </div>
     <div id="mainUI" style="display:none;">
       <div id="heroImage"></div>
       <div id="logoutButton" @click="logout">LogOut</div>
-      <div id="status">
-        <span><b>{{ status.name }}</b></span><br>
-        <span>Hp: {{ status.hp }}</span><br>
-        <span>Atk: {{ status.atk }}</span><br>
-        <span>Def: {{ status.def }}</span>
-      </div>
-      <div id="statusShadow">
-        <span><b>{{ status.name }}</b></span><br>
-        <span>Hp: {{ status.hp }}</span><br>
-        <span>Atk: {{ status.atk }}</span><br>
-        <span>Def: {{ status.def }}</span>
+      <div id="statusBlock">
+        <div id="status">
+          <span><b>{{ status.name }}</b></span><br>
+          <span>Hp: {{ status.hp }}</span><br>
+          <span>Atk: {{ status.atk }}</span><br>
+          <span>Def: {{ status.def }}</span>
+        </div>
+        <div id="statusShadow">
+          <span><b>{{ status.name }}</b></span><br>
+          <span>Hp: {{ status.hp }}</span><br>
+          <span>Atk: {{ status.atk }}</span><br>
+          <span>Def: {{ status.def }}</span>
+        </div>
       </div>
     </div>
   </div>
