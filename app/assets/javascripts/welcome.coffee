@@ -5,6 +5,10 @@
 UI =
   shown: false
 
+$(document).on('turbolinks:load', () ->
+  gameMap.init()
+)
+
 $(window).scroll(
   () ->
     gameMap.update()

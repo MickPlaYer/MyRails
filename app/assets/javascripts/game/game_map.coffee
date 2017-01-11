@@ -1,7 +1,16 @@
 class this.GameMap
+  items: []
   blocks: blockSet.children
 
   constructor: (@hero) ->
+
+  init: () ->
+    that = this
+    $.ajax(
+      url: '/item.json'
+      success: (res) ->
+        that.items = res
+    )
 
   update: () ->
     if $(@blocks[1]).is(':off-top')
@@ -55,6 +64,8 @@ class this.GameMap
     return item
 
   getItemImage: (id) ->
-    return "url(#{Cloudinary.url}#{id}.png)"
+    result = @items.find (element) ->
+      return id is element.id
+    return "url(#{result.image})"
 
 this.gameMap = new GameMap(this.hero)
