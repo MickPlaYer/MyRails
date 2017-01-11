@@ -23,9 +23,9 @@ class ItemController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
     respond_to do |format|
       format.json do
-        @item = Item.find(params[:id])
         if @item.update(item_params)
           render :json => @item
         else
@@ -40,8 +40,10 @@ class ItemController < ApplicationController
         File.open(file_path, 'wb') do |file|
           file.write(image)
         end
-        Cloudinary::Uploader.upload(file_path, public_id: "items/#{params[:id]}")
-        render :json => { image: "" }
+        result = Cloudinary::Uploader.upload(file_path, public_id: "items/#{params[:id]}")
+        @item.image = result['url']
+        @item.save
+        render :json => @item
       end
     end
   end

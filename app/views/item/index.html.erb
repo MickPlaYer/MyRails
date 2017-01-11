@@ -22,7 +22,7 @@
       <div v-else>{{ item.description }}</div>
     </td>
     <td>
-      <img style="width:16px;height:16px;" :src="imgsrc" @click="uploadImage"/>
+      <img style="width:16px;height:16px;" :src="item.image" @click="uploadImage"/>
     </td>
     <td>
       <button v-if="editMode" @click="editItem">Save</button>
