@@ -41,7 +41,7 @@ class ItemController < ApplicationController
           file.write(image)
         end
         result = Cloudinary::Uploader.upload(file_path, public_id: "items/#{params[:id]}")
-        @item.image = result['url']
+        @item.image = result['secure_url']
         @item.save
         render :json => @item
       end
